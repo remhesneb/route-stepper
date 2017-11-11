@@ -1,4 +1,4 @@
-import { Injector, ModuleWithProviders, NgModule } from '@angular/core';
+import { ModuleWithProviders, NgModule } from '@angular/core';
 import { RouteStepperService } from './route-stepper.service';
 import { provideRouteSteps, ROUTE_STEPPER_DIRECTIVES, ROUTE_STEPS, RouteStep, setupRouteStepper } from './shared';
 import { Router } from '@angular/router';
@@ -17,7 +17,7 @@ export class RouteStepperModule
         return {
             ngModule : RouteStepperModule,
             providers: [
-                { provide: RouteStepperService, useFactory: setupRouteStepper, deps: [ Router, Injector, ROUTE_STEPS ] },
+                { provide: RouteStepperService, useFactory: setupRouteStepper, deps: [ Router, ROUTE_STEPS ] },
                 provideRouteSteps( routeSteps )
             ]
         }

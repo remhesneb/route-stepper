@@ -1,4 +1,4 @@
-import { InjectionToken, Injector } from '@angular/core';
+import { InjectionToken } from '@angular/core';
 import { RouteStepNextDirective } from './directives/route-step-next.directive';
 import { RouteStepPreviousDirective } from './directives/route-step-previous.directive';
 import { RouteStepSwipeDirective } from './directives/route-step-swipe.directive';
@@ -20,9 +20,9 @@ export const ROUTE_STEPPER_DIRECTIVES = [
     RouteStepNextDirective, RouteStepPreviousDirective, RouteStepSwipeDirective
 ];
 
-export function setupRouteStepper( router: Router, injector: Injector, config: RouteStep[][] )
+export function setupRouteStepper( router: Router, config: RouteStep[][] )
 {
-    return new RouteStepperService( router, injector, Array.prototype.concat.apply( [], config ) );
+    return new RouteStepperService( router, Array.prototype.concat.apply( [], config ) );
 }
 
 export function provideRouteSteps( routeSteps: RouteStep[] )
