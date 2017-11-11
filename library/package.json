@@ -1,0 +1,24 @@
+{
+    "name": "@remhesneb/route-stepper",
+    "version": "1.0.0-beta.0",
+    "author": "Benjamin Sehmer <sehmerb@me.com>",
+    "license": "MIT",
+    "private": false,
+    "dependencies": {
+        "@angular/common": "^2.0.0 || ^4.0.0",
+        "@angular/core": "^2.0.0 || ^4.0.0",
+        "@angular/router": "^2.0.0 || ^4.0.0",
+        "@angular/platform-browser": "^2.0.0 || ^4.0.0",
+        "lodash": "^4.17.4",
+        "rxjs": "^5.4.0"
+    },
+    "main": "index.ts",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/remhesneb/route-stepper.git"
+    },
+    "bugs": {
+        "url": "https://github.com/remhesneb/route-stepper/issues"
+    },
+    "homepage": "https://github.com/remhesneb/route-stepper#readme"
+}
