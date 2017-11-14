@@ -1,14 +1,14 @@
 {
     "name": "@remhesneb/route-stepper",
-    "version": "1.0.0-beta.1",
+    "version": "1.0.0-beta.2",
     "author": "Benjamin Sehmer <sehmerb@me.com>",
     "license": "MIT",
     "private": false,
     "dependencies": {
-        "@angular/common": "^2.0.0 || ^4.0.0",
-        "@angular/core": "^2.0.0 || ^4.0.0",
-        "@angular/router": "^2.0.0 || ^4.0.0",
-        "@angular/platform-browser": "^2.0.0 || ^4.0.0",
+        "@angular/common": "^2.0.0 || ^4.0.0 || ^5.0.0",
+        "@angular/core": "^2.0.0 || ^4.0.0 || ^5.0.0",
+        "@angular/router": "^2.0.0 || ^4.0.0 || ^5.0.0",
+        "@angular/platform-browser": "^2.0.0 || ^4.0.0 || ^5.0.0",
         "lodash": "^4.17.4",
         "rxjs": "^5.4.0"
     },
