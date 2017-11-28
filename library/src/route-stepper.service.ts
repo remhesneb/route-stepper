@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Router, RoutesRecognized } from '@angular/router';
+import { NavigationEnd, Router, RoutesRecognized } from '@angular/router';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { RouteStep } from './shared';
 import { Observable } from 'rxjs/Observable';
@@ -42,22 +42,28 @@ export class RouteStepperService
                 let route = this._trimUrl( event.urlAfterRedirects );
                 if ( this._getDisabledRoutes().indexOf( route ) != -1 ) {
                     this._router.navigateByUrl( '' );
-                } else {
-                    this.markRouteAsVisited( route );
                 }
             } );
+        this._router.events
+            .filter( event => event instanceof NavigationEnd )
+            .subscribe( ( event: NavigationEnd ) => {
+                let route = this._trimUrl( event.urlAfterRedirects );
+                this.markRouteAsVisited( route );
+            } )
     }
 
     private _step( backward: boolean = false )
     {
-        let routeStep = this._currentRouteStep;
+        if ( !!this._currentRouteStep ) {
+            let routeStep = this._currentRouteStep;
 
-        do {
-            routeStep = this._routeSteps$.value.find( !backward ? _findNext( routeStep ) : _findPrevious( routeStep ) );
-        } while ( routeStep && routeStep.disabled );
+            do {
+                routeStep = this._routeSteps$.value.find( !backward ? _findNext( routeStep ) : _findPrevious( routeStep ) );
+            } while ( routeStep && routeStep.disabled );
 
-        this._currentRouteStep = routeStep;
-        this._router.navigateByUrl( this._currentRouteStep.route );
+            this._currentRouteStep = routeStep;
+            this._router.navigateByUrl( this._currentRouteStep.route );
+        }
     }
 
     stepForward()
@@ -76,7 +82,7 @@ export class RouteStepperService
         let visitedRoutes = routeSteps.filter( step => step.visited ).map( step => step.route );
         let routeStep     = routeSteps.find( step => step.route == route );
 
-        if ( routeStep && visitedRoutes.indexOf( route ) == -1 ) {
+        if ( !!routeStep && visitedRoutes.indexOf( route ) == -1 ) {
             routeStep.visited      = true;
             this._currentRouteStep = routeStep;
             this._routeSteps$.next( routeSteps );
