@@ -8,13 +8,13 @@ export class RouteStepSwipeDirective
 {
     constructor( private _routeStepperService: RouteStepperService ) {}
 
-    @HostListener( 'document:swipeleft' )
+    @HostListener( 'swipeleft' )
     onSwipeLeft()
     {
         this._routeStepperService.stepForward();
     }
 
-    @HostListener( 'document:swiperight' )
+    @HostListener( 'swiperight' )
     onSwipeRight()
     {
         this._routeStepperService.stepBackward();
